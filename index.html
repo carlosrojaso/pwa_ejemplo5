@@ -13,4 +13,31 @@
 <body>
   <tcc-root></tcc-root>
 <script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCnNzxXvikLKjikTlNmcIrBnI3c2LN-dYw",
+    authDomain: "pwaexamp.firebaseapp.com",
+    databaseURL: "https://pwaexamp.firebaseio.com",
+    projectId: "pwaexamp",
+    storageBucket: "pwaexamp.appspot.com",
+    messagingSenderId: "15400100509"
+  };
+  firebase.initializeApp(config);
+
+  // Retrieve Firebase Messaging object.
+  const messaging = firebase.messaging();
+
+  messaging.requestPermission()
+  .then(function() {
+    console.log('Notification permission granted.');
+    // TODO(developer): Retrieve an Instance ID token for use with FCM.
+    // ...
+  })
+  .catch(function(err) {
+    console.log('Unable to get permission to notify.', err);
+  });
+</script>
 </html>
